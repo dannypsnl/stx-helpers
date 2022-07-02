@@ -23,7 +23,5 @@ jobs:
           version: ${{ matrix.racket-version }}
       - name: Installing stx-helpers and its dependencies
         run: raco pkg install --no-docs --auto --name stx-helpers
-      - name: Compiling stx-helpers and building its docs
-        run: raco setup --check-pkg-deps --unused-pkg-deps stx-helpers
       - name: Testing stx-helpers
         run: raco test -x -p stx-helpers
