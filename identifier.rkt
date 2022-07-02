@@ -1,17 +1,22 @@
 #lang racket/base
-(provide identifier->string
-         string->identifier
+(provide identifier->symbol symbol->identifier
+         identifier->string string->identifier
          identifier-append)
 
-(define (identifier->string stx)
-  (symbol->string (syntax->datum stx)))
+(define (identifier->symbol id)
+  (syntax->datum id))
+(define (symbol->identifier sym [srcloc #f])
+  (datum->syntax (if (syntax? srcloc) srcloc #f)
+                 sym srcloc))
 
-(define (string->identifier str #:srcloc [srcloc #f])
-  (datum->syntax #'#f (string->symbol str) srcloc))
+(define (identifier->string id)
+  (symbol->string (identifier->symbol id)))
+(define (string->identifier str [srcloc #f])
+  (symbol->identifier (string->symbol str) srcloc))
 
 (define (identifier-append #:srcloc [srcloc #f] . id*)
-  (string->identifier #:srcloc srcloc
-                      (apply string-append (map identifier->string id*))))
+  (string->identifier (apply string-append (map identifier->string id*))
+                      srcloc))
 
 (module+ test
   (require rackunit
@@ -30,8 +35,7 @@
   (test-case "convert string to identifier"
              (check-identifier-equal? (string->identifier "abc") #'abc)
              (define stx #'def)
-             (check-identifier-strict-equal? (string->identifier "def"
-                                                                 #:srcloc stx)
+             (check-identifier-strict-equal? (string->identifier "def" stx)
                                              stx))
   (test-case "concat identifiers"
              (check-identifier-equal? (identifier-append #'a #'bc) #'abc)
