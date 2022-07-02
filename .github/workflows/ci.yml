@@ -1,5 +1,21 @@
-on: [push, pull_request]
 name: CI
+on:
+  push:
+    branches:
+      - "*"
+    paths:
+      - "**ci.yml"
+      - "**.rkt"
+      - "**.scrbl"
+  pull_request:
+    branches:
+      - "*"
+    paths:
+      - "**.rkt"
+      - "**.scrbl"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 jobs:
   build:
     name: "Build on Racket '${{ matrix.racket-version }}' (${{ matrix.racket-variant }})"
