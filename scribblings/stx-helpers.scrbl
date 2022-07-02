@@ -24,19 +24,32 @@
            (identifier->string #'||)]
 }
 
-@defproc[(string->identifier [str string?])
+@defproc[(string->identifier [str string?]
+                             [#:srcloc srcloc (or/c #f syntax? srcloc?) #f])
          identifier?]{
  Convert a string to an identifier.
 
  @examples[#:eval eval
            (string->identifier "abc")]
+
+ When @racket[srcloc] is provided, the srcloc of the result will follow the given.
+ @examples[#:eval eval
+           (define srcloc #'id)
+           (string->identifier "abc" #:srcloc srcloc)]
 }
 
-@defproc[(identifier-append [ids identifier?] ...)
+@defproc[(identifier-append [ids identifier?] ...
+                            [#:srcloc srcloc (or/c #f syntax? srcloc?) #f])
          identifier?]{
  Concat multiple identifier into one.
 
  @examples[#:eval eval
            (identifier-append #'ab #'c)
            (identifier-append #'hello #'- #'world)]
+
+ When @racket[srcloc] is provided, the srcloc of the result will follow the given.
+ @examples[#:eval eval
+           (define srcloc #'id)
+           (identifier-append #'hello #'-world
+                              #:srcloc srcloc)]
 }
