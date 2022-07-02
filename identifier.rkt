@@ -1,5 +1,5 @@
 #lang racket/base
-(provide identifer->string)
+(provide identifier->string)
 
-(define (identifer->string stx)
+(define (identifier->string stx)
   (symbol->string (syntax->datum stx)))
