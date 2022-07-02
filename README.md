@@ -1,11 +1,11 @@
-# stx-helpers
+# syntax-extension
 
-A helper collection of syntax.
+An extension of `syntax` module.
 
 ### Installation & Usage
 
 ```shell
-raco pkg install --auto stx-helpers
+raco pkg install --auto syntax-extension
 ```
 
 Example code

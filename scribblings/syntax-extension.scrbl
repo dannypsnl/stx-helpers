@@ -4,7 +4,7 @@
           racket/sandbox
           scribble/example)
 
-@title{stx-helpers}
+@title{syntax-extension}
 @author{dannypsnl}
 
 @defmodule[syntax/identifier]
