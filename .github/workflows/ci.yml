@@ -21,7 +21,7 @@ jobs:
           distribution: full
           variant: ${{ matrix.racket-variant }}
           version: ${{ matrix.racket-version }}
-      - name: Installing stx-helpers and its dependencies
-        run: raco pkg install --no-docs --auto --name stx-helpers
-      - name: Testing stx-helpers
-        run: raco test -x -p stx-helpers
+      - name: Installing syntax-extension and its dependencies
+        run: raco pkg install --no-docs --auto --name syntax-extension
+      - name: Testing syntax-extension
+        run: raco test -x -p syntax-extension
