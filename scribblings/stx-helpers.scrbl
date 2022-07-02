@@ -1,5 +1,5 @@
 #lang scribble/manual
-@require[@for-label[syntax/identifer
+@require[@for-label[syntax/identifier
                     racket/base]]
 
 @title{stx-helpers}
