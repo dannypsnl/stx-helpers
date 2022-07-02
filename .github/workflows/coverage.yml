@@ -24,14 +24,13 @@ jobs:
       - name: Setup Racket
         uses: Bogdanp/setup-racket@v1.7
         with:
-          architecture: "x64"
-          distribution: "minimal"
+          architecture: x64
+          distribution: full
           variant: "CS"
           version: "stable"
-          packages: "cover, cover-coveralls"
+          packages: "cover, cover-badge"
       - run: raco pkg install --no-docs --auto --skip-installed --name syntax-extension
       - run: |
-          raco pkg install --auto cover-badge
           raco cover .
           raco cover-badge
       - name: Deploy
