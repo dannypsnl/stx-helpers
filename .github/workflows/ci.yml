@@ -38,6 +38,6 @@ jobs:
           variant: ${{ matrix.racket-variant }}
           version: ${{ matrix.racket-version }}
       - name: Installing syntax-extension and its dependencies
-        run: raco pkg install --no-docs --auto --name syntax-extension
+        run: raco pkg install --no-docs --auto --skip-installed
       - name: Testing syntax-extension
         run: raco test -x -p syntax-extension
