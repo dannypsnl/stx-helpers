@@ -27,6 +27,8 @@
     (and (equal? (syntax-srcloc actual) (syntax-srcloc expected))
          (free-identifier=? actual expected)))
 
+  (check-identifier-equal? (symbol->identifier 'abc) #'abc)
+
   (test-case "convert identifier to string"
              (check-equal? (identifier->string #'abc) "abc")
              (check-equal? (identifier->string #'abc2) "abc2")
