@@ -1,5 +1,10 @@
 #lang racket/base
-(provide (all-defined-out))
+(provide stx-andmap
+         stx-ormap
+         stx-length
+         stx-length=?
+         stx-length>=?
+         stx-length<=?)
 (require racket/function
          syntax/stx)
 
